@@ -55,6 +55,14 @@ module Sherbet
       Faker::Game.platform
     end
 
+    # Without types defined in the Faker gem, this would compile because
+    # we don't know what Faker::Game.platform returns. Instead, it would
+    # be a runtime error.
+    # sig { returns(Integer) }
+    # def platform
+    #   Faker::Game.platform
+    # end
+
     sig { returns(String) }
     def boxquote
       "\"It's like the #{Faker::Game.title} of #{genre}s!\" - #{Faker::Name.name}"
