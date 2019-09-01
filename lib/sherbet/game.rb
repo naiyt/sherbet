@@ -1,3 +1,4 @@
+# typed: true
 require "faker"
 require_relative "./generator"
 

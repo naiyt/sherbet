@@ -1,3 +1,4 @@
+# typed: true
 module Sherbet
   module Utilities
     def self.option_to_integer(hash, key, default)
