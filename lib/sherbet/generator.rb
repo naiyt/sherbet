@@ -5,6 +5,8 @@ require "set"
 module Sherbet
   class Generator
     extend T::Sig
+    extend T::Helpers
+    abstract!
 
     sig { params(number_generated: Integer).void }
     def run(number_generated=1)
@@ -17,15 +19,10 @@ module Sherbet
       end
     end
 
-    # TODO: interface
-    sig { returns(T::Array[String]) }
-    def info
-      []
-    end
+    sig { abstract.returns(T::Array[String]) }
+    def info; end
 
-    sig { returns(String) }
-    def wrapper_emoji
-      "*"
-    end
+    sig { abstract.returns(String) }
+    def wrapper_emoji; end
   end
 end

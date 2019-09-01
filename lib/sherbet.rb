@@ -8,8 +8,6 @@ require "sherbet/game"
 require "sherbet/utilities"
 
 module Sherbet
-  class AbstractMethodError < StandardError; end
-
   class ThorInterface < Thor
     extend T::Sig
 
@@ -17,6 +15,8 @@ module Sherbet
     method_option :times, aliases: "-t", desc: "number of ideas to generate"
     sig { void }
     def startup
+      # Now that Generator is abstract, this will be a runtime error:
+      # Sherbet::Generator.new
       Sherbet::Startup.new.run(Sherbet::Utilities.option_to_integer(options, :times, 1))
     end
 
@@ -24,6 +24,8 @@ module Sherbet
     method_option :times, aliases: "-t", desc: "number of ideas to generate"
     sig { void }
     def game
+      # This doesn't match the type signature of run, so it will be a type error:
+      # Sherbet::Game.new.run
       Sherbet::Game.new.run(Sherbet::Utilities.option_to_integer(options, :times, 1))
     end
   end

@@ -15,7 +15,7 @@ module Sherbet
       @genre = T.let(nil, T.nilable(String))
     end
 
-    sig { returns(T::Array[String]) }
+    sig { implementation.returns(T::Array[String]) }
     def info
       [
         title,
@@ -24,7 +24,7 @@ module Sherbet
       ]
     end
 
-    sig { returns(String) }
+    sig { implementation.returns(String) }
     def wrapper_emoji
       "🎮"
     end
