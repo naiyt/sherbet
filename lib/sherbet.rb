@@ -20,6 +20,10 @@ module Sherbet
       # Now that Generator is abstract, this will be a runtime error:
       # Sherbet::Generator.new
       Sherbet::Startup.new.run(Sherbet::Utilities.option_to_integer(options, :times, 1))
+
+      # Run is void, so the following is not the normal return value of .run, but the
+      # special T::Private::Types::Void::VOID object
+      # Sherbet::Startup.new.run(Sherbet::Utilities.option_to_integer(options, :times, 1))
     end
 
     desc "game", "generates a new game idea"
