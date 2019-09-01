@@ -22,8 +22,8 @@ module Sherbet
     end
 
     def title
-      title = obscure(Faker::Game.title)
-      subtitle = obscure(Faker::Game.title)
+      title = Sherbet::Utilities.obscure(Faker::Game.title)
+      subtitle = Sherbet::Utilities.obscure(Faker::Game.title)
       subtitle = "The #{subtitle}" unless subtitle.downcase.start_with?("the")
       "#{title}: #{subtitle}"
     end
