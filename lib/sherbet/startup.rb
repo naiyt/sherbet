@@ -3,12 +3,16 @@ require_relative "./generator"
 
 module Sherbet
   class Startup < Generator
-    def run
-      puts company_name
-      puts "\n"
-      puts tagline
-      puts "\n"
-      puts "We're expecting a valuation of $#{valuation} and are accepting investors now."
+    def info
+      [
+        company_name,
+        tagline,
+        valuation
+      ]
+    end
+
+    def wrapper_emoji
+      "💵"
     end
 
     private
@@ -28,7 +32,8 @@ module Sherbet
     end
 
     def valuation
-      rand(-100_000_000_000..100_000_000_000)
+      price = rand(-100_000_000_000..100_000_000_000)
+      "We're expecting a valuation of $#{price} and are accepting investors now."
     end
   end
 end

@@ -3,15 +3,23 @@ require_relative "./generator"
 
 module Sherbet
   class Game < Generator
-    def run
-      puts title
-      puts "\n"
-      puts "This revolutionary new #{genre} is coming soon to #{platform} and #{platform}!"
-      puts "\n"
-      puts boxquote
+    def info
+      [
+        title,
+        pitch,
+        boxquote
+      ]
+    end
+
+    def wrapper_emoji
+      "🎮"
     end
 
     private
+
+    def pitch
+      "This revolutionary new #{genre} is coming soon to #{platform} and #{platform}!"
+    end
 
     def title
       title = obscure(Faker::Game.title)
@@ -22,7 +30,7 @@ module Sherbet
 
     def genre(bust_cache=false)
       @genre = nil if bust_cache
-      @genre||= Faker::Game.genre
+      @genre ||= Faker::Game.genre
     end
 
     def platform

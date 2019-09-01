@@ -3,7 +3,19 @@ require "set"
 module Sherbet
   class Generator
     def run
-      raise Sherbet::AbstractMethodError
+      puts wrapper_emoji * 40
+      puts "\n"
+      puts info.join("\n\n")
+      puts "\n"
+      puts wrapper_emoji * 40
+    end
+
+    def info
+      []
+    end
+
+    def wrapper_emoji
+      "*"
     end
 
     def obscure(string, to_change=2)
