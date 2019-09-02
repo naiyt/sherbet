@@ -52,6 +52,19 @@ module Sherbet
 
     sig { returns(String) }
     def platform
+      # Gradual typing side effect: because Faker hasn't been typed,
+      # platform is typed as T.untyped. This means that the following line
+      # will be a runtime error, not a type error, because Sorbet does not
+      # know what it is:
+      #
+      # platform = Faker::Game.platform
+      # platform.do_a_thing
+      #
+      # If we can't type out the Faker files, we could instead assert the type
+      # of the object to let the compiler know what we know. This means we will now
+      # get a compiler error:
+      # platform = T.let(Faker::Game.platform, String)
+      # platform.do_a_thing
       Faker::Game.platform
     end
 
