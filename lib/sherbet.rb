@@ -19,6 +19,11 @@ module Sherbet
     def startup
       # Now that Generator is abstract, this will be a runtime error:
       # Sherbet::Generator.new
+
+      # Compiler error!
+      # options = T.let({}, T::Hash[T.any(String, Symbol), T.untyped])
+      # options[1] = 1
+
       Sherbet::Startup.new.run(Sherbet::Utilities.option_to_integer(options, :times, 1))
 
       # Run is void, so the following is not the normal return value of .run, but the
